@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
 resources :appartments
-
-root to: "appartements#index"
+root 'appartments#home'
+# root to: "appartements#index"
 
   get 'users/index'
 
