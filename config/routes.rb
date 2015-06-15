@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 resources :appartments
 
-root to: "appartments#index"
+root to: "appartments#home"
 
   get 'users/index'
 
