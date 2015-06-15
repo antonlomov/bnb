@@ -5,6 +5,10 @@ class AppartmentsController < ApplicationController
 
   def new
     @appartment = Appartment.new
+    @property_types = Appartment::PROPERTY_TYPES
+    @room_numbers = Appartment::ROOM_NUMBERS
+    @capacities = Appartment::CAPACITIES
+
   end
 
   def create

@@ -1,2 +1,9 @@
-<h1>Appartments#new</h1>
-<p>Find me in app/views/appartments/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>Add a new Apartment</h1>
+    <%= render 'form' %>
+    <br>
+    <%= link_to "All Apartments", appartments_path, {class: "btn btn-primary"} %>
+    <br>
+  </div>
+</div>
