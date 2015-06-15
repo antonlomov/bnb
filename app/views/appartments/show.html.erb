@@ -1,2 +1,24 @@
 <h1>Appartments#show</h1>
 <p>Find me in app/views/appartments/show.html.erb</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @appartment.address %>
+</p>
+
+<p>
+  <strong>Property type:</strong>
+  <%= @appartment.property_type %>
+</p>
+
+<p>
+  <strong>Number of bedrooms:</strong>
+  <%= @appartment.nbr_rooms %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @appartment.capacity %>
+</p>
+
+<p><%= link_to 'Return to list of apartments', appartments_path %></p>
