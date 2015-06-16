@@ -6,6 +6,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     # so here we give the path the end of the account's creation action should redirect to instead of the default devise redirect
-    users_new_path
+    new_user_path
   end
 end
