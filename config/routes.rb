@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
-resources :appartments
+  devise_for :accounts, :controllers => { :registrations => "registrations" }
+  # (**) so here we tell devise that we're overwriting (piece) of his controller by our RegistrationsController
 
-root to: "appartments#home"
+  resources :appartments
+
+  root to: "appartments#home"
 
   get 'users/index'
 
