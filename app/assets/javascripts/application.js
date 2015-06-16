@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+$(".window-height").css("height", $(window).height());

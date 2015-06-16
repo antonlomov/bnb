@@ -1,18 +1,23 @@
 
-<div class="container">
-  <div class = 'top-banner'>
-    <div class="container text-center">
+
       <div class="text-center top">
-        <h1> WELCOME HOME </h1>
-        <h5> Rent unique places to stay from local hosts in 190+ countries.</h5>
+
+        <div class="video window-height col-sm-12">
+          <%= video_tag("forest.mp4", :autoplay => true) %>
+        <div class="title text-center">
+          <h1> WELCOME HOME </h1>
+          <h5> Rent unique places to stay from local hosts in 190+ countries.</h5>
+        <div class="text-center">
+          <div class="btn btn-danger">
+            <%= link_to 'Search', appartments_path %>
+          </div>
+                </div>
+
       </div>
-      <div class="text-center">
-        <div class="btn btn btn-danger">
-          <%= link_to 'Search', appartments_path %>
+
         </div>
       </div>
     </div>
-  </div>
 </div>
 
 
