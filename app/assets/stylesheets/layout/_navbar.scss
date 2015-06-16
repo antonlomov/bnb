@@ -9,7 +9,7 @@ $navbar-text-transform: capitalize;
 $navbar-font-weight: 300;
 $navbar-letter-spacing: 1.5px;
 $navbar-font-family: $navbar-font;
-$navbar-bg: white;
+$navbar-bg: rgba(55,55,55,0.5);;
 
 /* -------------------------------------
  * Box model
@@ -24,7 +24,7 @@ $navbar-border-bottom-color: $gray-lighter;
  * Navbar button
  * ------------------------------------- */
 $navbar-btn-height: 40px;
-$navbar-btn-bg: lightgrey;
+$navbar-btn-bg: #4DAF7C;
 $navbar-btn-color: white;
 $navbar-btn-horizontal-padding: 10px;
 $navbar-btn-radius: 2px;
