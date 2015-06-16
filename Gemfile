@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'  # Add this at line 2
+# we'll have to add ruby 2.2.2 here when deploying to heroku
 
 gem "gmaps4rails"
 gem "rails-assets-underscore"

@@ -24,8 +24,11 @@ class AppartmentsController < ApplicationController
   def create
     @appartment = Appartment.new(appartment_params)
     if @appartment.save
-      redirect_to appartments_path(@appartment)
+      redirect_to appartment_path(@appartment)
     else
+      @property_types = Appartment::PROPERTY_TYPES
+      @room_numbers = Appartment::ROOM_NUMBERS
+      @capacities = Appartment::CAPACITIES
       render :new
     end
   end
