@@ -1,3 +1,49 @@
 /* -------------------------------------
  * You killer form SASS module
  * ------------------------------------- */
+
+ /* -------------------------------------
+ * Fourm colors
+ * ------------------------------------- */
+$fourm-button-color: #4DAF7C ;
+$fourm-header-background-color:#D2D7D3;
+$fourm-body-background-color:#FFF;
+$fourm-color: #565a5c;
+$fourm-border:1px solid #dce0e0;;
+
+/* -------------------------------------
+ * Fourm font
+ * ------------------------------------- */
+$fourm-font:'Karla', sans-serif;
+
+
+
+
+ .panel-header h1 {
+  background-color: $fourm-header-background-color;
+  color: $fourm-color;
+  font-size: 16px;
+  padding-top: 12px;
+  padding-bottom: 16px;
+  border: $fourm-border;
+  font-family: $fourm-font;
+  text-align: center;
+
+}
+
+.panel-body {
+  background-color: $fourm-body-background-color;
+  color: $fourm-color;
+  font-size: 14px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: $fourm-border;
+  font-family: $fourm-font;
+
+}
+
+
+
+.panel-body .btn {
+  background-color: $fourm-button-color;
+}
