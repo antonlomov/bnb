@@ -16,6 +16,7 @@ class AppartmentsController < ApplicationController
 
   def new
     @appartment = Appartment.new
+    # to pass those constants from the model to the view via the controller
     @property_types = Appartment::PROPERTY_TYPES
     @room_numbers = Appartment::ROOM_NUMBERS
     @capacities = Appartment::CAPACITIES
@@ -23,6 +24,8 @@ class AppartmentsController < ApplicationController
 
   def create
     @appartment = Appartment.new(appartment_params)
+    # linking the new appartment to the user on the current session (from current_account)
+    @appartment.owner_id = current_account.user_id
     if @appartment.save
       redirect_to appartment_path(@appartment)
     else
