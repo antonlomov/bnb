@@ -1,16 +1,13 @@
 Rails.application.routes.draw do
 
-resources :appartments
+  devise_for :accounts, :controllers => { :registrations => "registrations" }
+  # (**) so here we tell devise that we're overwriting (piece) of his controller by our RegistrationsController
 
-root to: "appartments#home"
+  resources :appartments
 
-  get 'users/index'
+  root to: "appartments#home"
 
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/edit'
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

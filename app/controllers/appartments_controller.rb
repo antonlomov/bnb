@@ -1,6 +1,17 @@
 class AppartmentsController < ApplicationController
+  skip_before_action :authenticate_account!, only: [:index, :show, :home]
+
+  def home
+  end
+
   def show
     @appartment = Appartment.find(params[:id])
+
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@appartment) do |appartment, marker|
+      marker.lat appartment.latitude
+      marker.lng appartment.longitude
+    end
   end
 
   def new
@@ -8,7 +19,6 @@ class AppartmentsController < ApplicationController
     @property_types = Appartment::PROPERTY_TYPES
     @room_numbers = Appartment::ROOM_NUMBERS
     @capacities = Appartment::CAPACITIES
-
   end
 
   def create
@@ -18,11 +28,15 @@ class AppartmentsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def index
     @appartments = Appartment.all
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
+      marker.lat appartment.latitude
+      marker.lng appartment.longitude
+    end
   end
 
   def edit
@@ -40,6 +54,8 @@ class AppartmentsController < ApplicationController
     @appartment.destroy
     redirect_to appartments_path
   end
+
+  protected
 
   def appartment_params
     params.require(:appartment).permit(:address, :property_type, :nbr_rooms, :capacity)
