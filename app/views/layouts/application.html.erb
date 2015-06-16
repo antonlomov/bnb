@@ -10,12 +10,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 </head>
 <body>
-<%= render "shared/navbar" %>
+  <%= render "shared/navbar" %>
   <%= yield %>
-    <%= render "shared/footer" %>
-    <!-- For inserting some analytics script (GA, Mixpanel..) -->
-    <%= render "shared/analytics" %>
+  <%= render "shared/footer" %>
+  <!-- For inserting some analytics script (GA, Mixpanel..) -->
+  <%= render "shared/analytics" %>
 
+  <%= render 'shared/notices' %>
+  <%= render 'shared/alerts' %>
 
 </body>
 </html>

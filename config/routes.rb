@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-resources :appartments
+  devise_for :accounts
+  resources :appartments
 
-root to: "appartments#home"
+  root to: "appartments#home"
 
   get 'users/index'
 
