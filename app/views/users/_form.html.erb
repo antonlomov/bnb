@@ -1,0 +1,10 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :phone_number %>
+  <%= f.button :submit %>
+<% end %>
+
+<!-- here we also pass account so we can remember the account_id to link the new user to -->
