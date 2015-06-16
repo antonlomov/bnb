@@ -6,6 +6,12 @@ class AppartmentsController < ApplicationController
 
   def show
     @appartment = Appartment.find(params[:id])
+
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@appartment) do |appartment, marker|
+      marker.lat appartment.latitude
+      marker.lng appartment.longitude
+    end
   end
 
   def new
@@ -26,6 +32,11 @@ class AppartmentsController < ApplicationController
 
   def index
     @appartments = Appartment.all
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
+      marker.lat appartment.latitude
+      marker.lng appartment.longitude
+    end
   end
 
   def edit
