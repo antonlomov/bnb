@@ -1,4 +1,6 @@
 class Appartment < ActiveRecord::Base
+  geocoded_by :address
+  after_validation :geocode
   PROPERTY_TYPES = %w(Apartment House Room)
   ROOM_NUMBERS = (1..5).to_a
   CAPACITIES = (1..12).to_a
