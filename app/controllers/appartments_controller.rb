@@ -12,8 +12,13 @@ class AppartmentsController < ApplicationController
   end
 
   def create
-    @appartment = Appartment.create(appartment_params)
-    redirect_to appartment_path(@appartment)
+    @appartment = Appartment.new(appartment_params)
+    if @appartment.save
+      redirect_to appartments_path(@appartment)
+    else
+      render :new
+    end
+
   end
 
   def index
