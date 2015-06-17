@@ -9,10 +9,10 @@ class BookingsController < ApplicationController
     @booking.user_id = current_account.user_id
     if @booking.save
       redirect_to booking_path(@booking)
-      @errors = ""
     else
       @appartment = Appartment.find(params[:appartment_id])
       @errors = @booking.errors.messages
+      # those 2 instance variables are passed with the render
       render 'appartments/show'
     end
   end

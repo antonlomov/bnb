@@ -1,7 +1,9 @@
 <div class="manual-validation-errors">
-  <% @errors.each do |key, value| %>
-    Error for <%= key.to_s %> : <%= value.join %>
-    <br>
+  <% if ! @errors.empty? %>
+    <% @errors.each do |key, value| %>
+      Error for <%= key.to_s %> : <%= value.join %>
+      <br>
+    <% end %>
   <% end %>
   <br>
 </div>
