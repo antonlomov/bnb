@@ -10,5 +10,11 @@ class Appartment < ActiveRecord::Base
   validates :property_type, inclusion: { in: PROPERTY_TYPES, message: "%{value} is not a valid property type" }
   validates :nbr_rooms, inclusion: { in: ROOM_NUMBERS, message: "%{value} is not in the range of room numbers" }, numericality: { only_integer: true }
   validates :capacity, inclusion: { in: CAPACITIES, message: "%{value} is not in the range of capacities" }, numericality: { only_integer: true }
+
+  has_attached_file :picture,
+    styles: { medium: "300x300>", thumb: "100x100>" }
+
+  validates_attachment_content_type :picture,
+    content_type: /\Aimage\/.*\z/
 end
 
