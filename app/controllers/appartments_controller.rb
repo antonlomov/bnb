@@ -9,7 +9,6 @@ class AppartmentsController < ApplicationController
     @booking = Booking.new
     @errors = []
     @dates = check_appartment_availability
-
     # Let's DYNAMICALLY build the markers for the view.
     @markers = Gmaps4rails.build_markers(@appartment) do |appartment, marker|
       marker.lat appartment.latitude
@@ -68,23 +67,33 @@ class AppartmentsController < ApplicationController
     @appartment = Appartment.find(params[:id])
     @available_ranges = @appartment.availability_periods
     @booked_ranges = @appartment.bookings
-    return @available_dates = check_available_ranges(@available_ranges).uniq!
-    @booked_dates =check_bookings_ranges(@booked_ranges).uniq!
+    @available_dates = check_available_ranges(@available_ranges)
+    if @available_dates.uniq.nil?
+      @available_dates
+    else
+      @available_dates.uniq!
+    end
+    @booked_dates = check_bookings_ranges(@booked_ranges)
+    if @booked_dates.uniq.nil?
+      @booked_dates
+    else
+      @booked_dates.uniq!
+    end
+    @bookable_dates = @available_dates - @booked_dates
   end
 
   def check_available_ranges(ranges)
-
-
     available_dates = []
     ranges.map do |range|
       available_dates << (range.start_date..range.end_date).to_a
       available_dates.flatten!
     end
     available_dates
+
+
   end
 
   def check_bookings_ranges(ranges)
-
     booked_dates = []
     ranges.map do |range|
       booked_dates << (range.start_date..range.end_date).to_a
