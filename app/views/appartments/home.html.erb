@@ -1,24 +1,14 @@
-        <div class="video window-height">
-          <%= video_tag("forest.mp4", :autoplay => true) %>
-        <div class="title text-center">
-          <h1> WELCOME HOME </h1>
-          <h5> Rent unique places to stay from local hosts in 190+ countries.</h5>
-          <div class="btn btn-danger text-center search-btn ">
-            <%= link_to 'Search', appartments_path %>
-          </div>
-        </div>
+<div class="video window-height">
+  <%= video_tag("forest.mp4", :autoplay => true, :autobuffer => true, :loop => true) %>
+  <div class="title text-center">
+    <h1> WELCOME HOME </h1>
+    <h5> Rent unique places to stay from local hosts in 190+ countries.</h5>
+    <div class="btn btn-danger text-center search-btn ">
+      <%= link_to 'Search', appartments_path %>
+    </div>
+  </div>
 
-        </div>
-
-
-
-<div class="text-center">
-    <% if account_signed_in? %>
-      Hello <%= current_account.email %>!
-      <%= link_to 'Log out', destroy_account_session_path, method: 'delete', class: "btn btn-danger" %>
-    <% else %>
-      <%= link_to 'Sign up', new_account_registration_path, class: "btn btn-primary" %>
-      <%= link_to 'Log in', new_account_session_path, class: "btn btn-success" %>
-    <% end %>
 </div>
+
+
 
