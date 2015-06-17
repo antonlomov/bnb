@@ -9,13 +9,14 @@ Rails.application.routes.draw do
 
   resources :appartments do
     resources :bookings, only: [:create]
+    resources :availability_periods, only: [:new, :create]
   end
 
   resources :bookings, only: [:show, :destroy, :index]
 
-  root to: "appartments#home"
-
   resources :users
+
+  root to: "appartments#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

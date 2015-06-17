@@ -8,10 +8,12 @@ class BookingsController < ApplicationController
     # linking the new booking to the user on the current session (from current_account)
     @booking.user_id = current_account.user_id
     if @booking.save
-
       redirect_to booking_path(@booking)
+      @errors = ""
     else
-      # render :new
+      @appartment = Appartment.find(params[:appartment_id])
+      @errors = @booking.errors.messages
+      render 'appartments/show'
     end
   end
 
