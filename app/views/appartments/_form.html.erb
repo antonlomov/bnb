@@ -5,14 +5,6 @@
   <%= f.input :nbr_rooms, collection: @room_numbers %>
   <%= f.input :capacity, collection: @capacities %>
   <%= f.input :property_type, collection: @property_types %>
+  <%= f.input :picture %>
   <%= f.button :submit %>
-<% end %>
-
-<%= form_for(@appartment, html: { multipart: true }) do |f| %>
-  <!-- ... -->
-  <p>
-    <%= f.label :picture %>
-    <%= f.file_field :picture %>
-  </p>
-  <p><%= f.submit %></p>
 <% end %>
