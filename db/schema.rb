@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617084036) do
+ActiveRecord::Schema.define(version: 20150617142211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20150617084036) do
     t.datetime "picture_updated_at"
   end
 
+  create_table "availability_periods", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "appartment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "availability_periods", ["appartment_id"], name: "index_availability_periods_on_appartment_id", using: :btree
+
   create_table "bookings", force: :cascade do |t|
     t.date     "start_date"
     t.date     "end_date"
@@ -77,4 +87,5 @@ ActiveRecord::Schema.define(version: 20150617084036) do
     t.datetime "picture_updated_at"
   end
 
+  add_foreign_key "availability_periods", "appartments"
 end

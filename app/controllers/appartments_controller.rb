@@ -28,7 +28,7 @@ class AppartmentsController < ApplicationController
     # linking the new appartment to the user on the current session (from current_account)
     @appartment.owner_id = current_account.user_id
     if @appartment.save
-      redirect_to appartment_path(@appartment)
+      redirect_to new_appartment_availability_period(@appartment)
     else
       @property_types = Appartment::PROPERTY_TYPES
       @room_numbers = Appartment::ROOM_NUMBERS

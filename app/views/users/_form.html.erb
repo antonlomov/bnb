@@ -4,15 +4,9 @@
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= f.input :phone_number %>
+  <%= f.input :picture %>
   <%= f.button :submit %>
 <% end %>
 
 <!-- here we also pass account so we can remember the account_id to link the new user to -->
-<%= form_for(@user, html: { multipart: true }) do |f| %>
-  <!-- ... -->
-  <p>
-    <%= f.label :picture %>
-    <%= f.file_field :picture %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+
