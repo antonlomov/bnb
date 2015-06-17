@@ -1,11 +1,12 @@
 <div class="padded">
   <div class="container">
     <div class="row">
-      <%= render 'bookings/form' %>
       <div class="col-xs-12 col-sm-6">
         <div class="center-this">
-          <h1>Title</h1>
+          <h1>Your Booking</h1>
           <ul>
+            <li>Check-In Date : <%= @booking.start_date %></li>
+            <li>Check-Out Date : <%= @booking.end_date %></li>
             <li>Address: <%= @appartment.address %></li>
             <li>Property Type: <%= @appartment.property_type %></li>
             <li>Capacity: <%= @appartment.capacity %></li>
@@ -22,5 +23,3 @@
     </div>
   </div>
 </div>
-
-

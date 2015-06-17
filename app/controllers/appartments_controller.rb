@@ -6,6 +6,7 @@ class AppartmentsController < ApplicationController
 
   def show
     @appartment = Appartment.find(params[:id])
+    @booking = Booking.new
 
     # Let's DYNAMICALLY build the markers for the view.
     @markers = Gmaps4rails.build_markers(@appartment) do |appartment, marker|
