@@ -34,6 +34,8 @@ gem 'figaro'
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'
 
+gem 'faker'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
