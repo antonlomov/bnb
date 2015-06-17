@@ -1,1 +1,46 @@
 // Your footer style
+
+/* -------------------------------------
+ * Colors & Fonts
+ * ------------------------------------- */
+
+ $footer-color: #fff;
+ $footer-bg: #2b2d2e;;
+ $footer-hover-color: $yellow;
+ $footer-font:'Karla', sans-serif;
+ $navbar-hover-color: $yellow;
+
+/* -------------------------------------
+ * Styles
+ * ------------------------------------- */
+footer {
+  position: fixed;
+}
+
+.footer {
+  color: $footer-color;
+  background: $footer-bg;
+  font-family: $navbar-font;
+  border: solid yellow 2px;
+
+}
+
+.footer a {
+  color: $footer-color;
+
+}
+
+.footer > li > a:hover {
+    color: $navbar-hover-color;
+    background-color: transparent;
+  }
+
+.copyright {
+  color: #82888a;
+}
+
+.about-us {
+border-top: solid #82888a 1px;
+  padding-top: 10px;
+}
+
