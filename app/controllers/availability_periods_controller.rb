@@ -3,6 +3,7 @@ class AvailabilityPeriodsController < ApplicationController
   def new
     @availability_period = AvailabilityPeriod.new
     @appartment = Appartment.find(params[:appartment_id])
+    @errors = []
   end
 
   def create
@@ -21,6 +22,7 @@ class AvailabilityPeriodsController < ApplicationController
   def destroy
 
   end
+
 
   protected
 
