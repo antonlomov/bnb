@@ -6,22 +6,26 @@
 
  $footer-color: #fff;
  $footer-bg: #2b2d2e;;
- $footer-hover-color: $yellow;
  $footer-font:'Karla', sans-serif;
- $navbar-hover-color: $yellow;
+ $footer-hover-color: $yellow;
+ $footer-font-size: 14px;
 
 /* -------------------------------------
  * Styles
  * ------------------------------------- */
-footer {
-  position: fixed;
+
+
+.top-table{
+  padding-top:2em;
+  padding-bottom: 4em;
 }
+
 
 .footer {
   color: $footer-color;
   background: $footer-bg;
   font-family: $navbar-font;
-  border: solid yellow 2px;
+  font-size: $footer-font-size;
 
 }
 
@@ -31,7 +35,7 @@ footer {
 }
 
 .footer > li > a:hover {
-    color: $navbar-hover-color;
+    color: $footer-hover-color;
     background-color: transparent;
   }
 
@@ -40,7 +44,38 @@ footer {
 }
 
 .about-us {
-border-top: solid #82888a 1px;
-  padding-top: 10px;
+  border-top: solid #82888a 1px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
+
+/* -------------------------------------
+ * Footer Table
+ * ------------------------------------- */
+.footer-table {
+  padding-bottom: 3em;
+}
+
+.footer-table th {
+  padding: 0.75em 5em;
+  font-size: 16px;
+
+}
+
+.footer a:hover {
+   color: $footer-hover-color;
+  }
+
+.footer-control {
+  background-color: #565a5c;
+  border: 0;
+  color: $footer-color;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  max-width: 60%;
+  margin-left: 3em;
+  margin-top:1em;
+}
+
 
