@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'bookings/index'
+
+  get 'bookings/show'
+
   devise_for :accounts, :controllers => { :registrations => "registrations" }
   # (**) so here we tell devise that we're overwriting (piece) of his controller by our RegistrationsController
 
-  resources :appartments
+  resources :appartments do
+    resources :bookings, only: [:create]
+  end
+
+  resources :bookings, only: [:show, :destroy, :index]
 
   root to: "appartments#home"
 

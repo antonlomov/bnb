@@ -3,28 +3,30 @@
 <div class="container">
   <% @appartments.each do |appartment| %>
       <div class= "text-center">
-        <div class="row">
-          <%#= image_tag appartment.picture.url(:thumb) %>
-          <p>
-            <strong>Address:</strong>
-            <%= appartment.address %>
-          </p>
+        <%= link_to appartment_path(appartment) do %>
+          <div class="row">
+            <%#= image_tag appartment.picture.url(:thumb) %>
+            <p>
+              <strong>Address:</strong>
+              <%= appartment.address %>
+            </p>
 
-          <p>
-            <strong>Property type:</strong>
-            <%= appartment.property_type %>
-          </p>
+            <p>
+              <strong>Property type:</strong>
+              <%= appartment.property_type %>
+            </p>
 
-          <p>
-            <strong>Number of bedrooms:</strong>
-            <%= appartment.nbr_rooms %>
-          </p>
+            <p>
+              <strong>Number of bedrooms:</strong>
+              <%= appartment.nbr_rooms %>
+            </p>
 
-          <p>
-            <strong>Sleep </strong>
-            <%= appartment.capacity %> people
-          </p>
-        </div>
+            <p>
+              <strong>Sleep </strong>
+              <%= appartment.capacity %> people
+            </p>
+          </div>
+        <% end %>
       </div>
   <% end %>
 </div>

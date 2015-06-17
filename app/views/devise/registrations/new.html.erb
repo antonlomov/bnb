@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -16,4 +19,6 @@
 
 <%= render "devise/shared/links" %>
 
+ </div>
+</div>
 <!-- (**) this new account form redirects to the post/create action that creates a new account -> in this create action of the account we want to redirect to the new action of the user -->
