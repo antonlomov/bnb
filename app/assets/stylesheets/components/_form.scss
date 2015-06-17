@@ -21,7 +21,7 @@ $fourm-font:'Karla', sans-serif;
  * ------------------------------------- */
 
 
-
+/* div class surrounds form header */
  .panel-header {
   background-color: $fourm-header-background-color;
   color: $fourm-color;
@@ -34,6 +34,7 @@ $fourm-font:'Karla', sans-serif;
 
 }
 
+/* div class surrounds form body*/
 .panel-body {
   background-color: $fourm-body-background-color;
   color: $fourm-color;
@@ -46,7 +47,7 @@ $fourm-font:'Karla', sans-serif;
 }
 
 
-
+/* div class surrounds form btn (same as the List your space button */
 .panel-body .btn {
   background-color: $fourm-button-color;
 }

@@ -1,24 +1,28 @@
-<div class="container">
-  <div class="row">
+<div class="padded">
+  <div class="container">
+    <div class="row">
+      <div class="panel-header">
+        <h2>Sign up</h2>
+      </div>
+      <div class="panel-body">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-<h2>Sign up</h2>
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+          <%= f.input :password_confirmation, required: true %>
+        </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+        <% end %>
+      </div>
+  <div class="btn btn-danger">
+  <%= render "devise/shared/links" %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+   </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
- </div>
+  <!-- (**) this new account form redirects to the post/create action that creates a new account -> in this create action of the account we want to redirect to the new action of the user -->
 </div>
-<!-- (**) this new account form redirects to the post/create action that creates a new account -> in this create action of the account we want to redirect to the new action of the user -->
