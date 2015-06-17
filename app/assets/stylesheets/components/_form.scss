@@ -17,6 +17,10 @@ $fourm-border:1px solid #dce0e0;;
 $fourm-font:'Karla', sans-serif;
 
 /* -------------------------------------
+ * Fourm details
+ * ------------------------------------- */
+$fourm-radius: 20px;
+/* -------------------------------------
  * Style
  * ------------------------------------- */
 
@@ -31,7 +35,8 @@ $fourm-font:'Karla', sans-serif;
   border: $fourm-border;
   font-family: $fourm-font;
   text-align: center;
-
+  border-top-left-radius: $fourm-radius;
+  border-top-right-radius: $fourm-radius;
 }
 
 /* div class surrounds form body*/
@@ -40,9 +45,12 @@ $fourm-font:'Karla', sans-serif;
   color: $fourm-color;
   font-size: 14px;
   padding-top: 12px;
-  padding-bottom: 12px;
+  padding-bottom: 3em;
   border: $fourm-border;
   font-family: $fourm-font;
+  border-bottom-left-radius: $fourm-radius;
+  border-bottom-right-radius: $fourm-radius;
+
 
 }
 
@@ -51,3 +59,6 @@ $fourm-font:'Karla', sans-serif;
 .panel-body .btn {
   background-color: $fourm-button-color;
 }
+
+
+
