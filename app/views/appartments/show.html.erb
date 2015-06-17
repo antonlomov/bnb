@@ -1,57 +1,25 @@
-<h1>Appartments#show</h1>
-<p>Find me in app/views/appartments/show.html.erb</p>
+<div class="padded">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class="center-this">
+          <h1>Title</h1>
+          <ul>
+            <li>Address: <%= @appartment.address %></li>
+            <li>Property Type: <%= @appartment.property_type %></li>
+            <li>Capacity: <%= @appartment.capacity %></li>
+            <li>Number of Rooms: <%= @appartment.nbr_rooms %></li>
+          </ul>
+          <p><%= link_to 'Return to list of apartments', appartments_path %></p>
+        </div>
+      </div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @appartment.address %>
-</p>
+      <div class="col-xs-12 col-sm-6">
+        <%= render 'shared/map' %>
+      </div>
 
-<p>
-  <strong>Property type:</strong>
-  <%= @appartment.property_type %>
-</p>
-
-<p>
-  <strong>Number of bedrooms:</strong>
-  <%= @appartment.nbr_rooms %>
-</p>
-
-<p>
-  <strong>Capacity:</strong>
-  <%= @appartment.capacity %>
-</p>
-
-<p><%= link_to 'Return to list of apartments', appartments_path %></p>
-=======
-<p>Hello<p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Appartment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        <p>This will be a apt loop over all appts<p>
-
-    </tr>
-  </tbody>
-</table>
-
-<div id="map" style="width: 50%; height: 500px;"></div>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).on('ready', function() {
-      handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-    })
-  <% end %>
-<% end %>
+    </div>
+  </div>
+</div>
 
 
