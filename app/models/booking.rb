@@ -13,7 +13,7 @@ class Booking < ActiveRecord::Base
 
   def start_date_before_end_date
     if start_date > end_date
-      errors.add(:start_date, "Check-In Date should be before Check-Out date")
+      errors.add(:start_date, "Check-in date should be before check-out date")
     end
   end
 
