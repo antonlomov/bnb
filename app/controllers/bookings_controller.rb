@@ -20,7 +20,6 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @appartment = @booking.appartment
-
     # Let's DYNAMICALLY build the markers for the view.
     @markers = Gmaps4rails.build_markers(@appartment) do |appartment, marker|
       marker.lat appartment.latitude
