@@ -34,7 +34,7 @@ end
     user: owner)
   2.times do
     Appartment.create(
-    address: Faker::Address.street_address + Faker::Address.city,
+    address: Faker::Address.street_address + " " + Faker::Address.city,
     property_type: %w(Apartment House Room).sample,
     nbr_rooms: (1..5).to_a.sample,
     capacity: (1..12).to_a.sample,

@@ -20,6 +20,11 @@ class Appartment < ActiveRecord::Base
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 
+  def self.find_by_city(city)
+    Appartment.where("address LIKE, city")
+  end
+
+
 
 end
 

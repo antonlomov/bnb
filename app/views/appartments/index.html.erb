@@ -2,7 +2,7 @@
 
 <%= form_for(@filter, method: :get, url: appartments_path) do |f| %>
 
-  <p>Address : <%= f.text_field :address %></p>
+  <p>Address : <%= f.text_field :address%></p>
   <p>Number of rooms : <%= f.text_field :nbr_rooms %></p>
   <p>Capacity : <%= f.text_field :capacity %></p>
   <p>Property type : <%= f.text_field :property_type %></p>
