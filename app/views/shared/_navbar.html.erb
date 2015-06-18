@@ -20,9 +20,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if account_signed_in? %>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-envelope-o"></i> <%= t(".messages", default: "Messages") %>
-              <% end %>
+              <%= link_to "Contact Us", '#' %>
             </li>
 
             <li class="dropdown">
@@ -35,7 +33,7 @@
                   <%= link_to "View My Bookings", "#" %>
                 </li>
                 <li>
-                  <%= link_to "View My Places", "#" %>
+                  <%= link_to "View My Places", for_owner_appartments_path %>
                 </li>
                 <li>
                   <%= link_to "Edit Profile", "#" %>

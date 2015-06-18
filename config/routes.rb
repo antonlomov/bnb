@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   # (**) so here we tell devise that we're overwriting (piece) of his controller by our RegistrationsController
 
   resources :appartments do
+    get 'for_owner', on: :collection
     resources :bookings, only: [:create]
-    resources :availability_periods, only: [:new, :create]
+    resources :availability_periods, only: [:new, :create, :destroy]
   end
 
   resources :bookings, only: [:show, :destroy, :index]

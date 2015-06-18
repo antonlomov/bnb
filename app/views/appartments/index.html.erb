@@ -1,33 +1,16 @@
-<h1>Appartments#index</h1>
-
-<div class="container">
-  <% @appartments.each do |appartment| %>
-      <div class= "text-center">
-        <%= link_to appartment_path(appartment) do %>
-          <div class="row">
-            <%#= image_tag appartment.picture.url(:thumb) %>
-            <p>
-              <strong>Address:</strong>
-              <%= appartment.address %>
-            </p>
-
-            <p>
-              <strong>Property type:</strong>
-              <%= appartment.property_type %>
-            </p>
-
-            <p>
-              <strong>Number of bedrooms:</strong>
-              <%= appartment.nbr_rooms %>
-            </p>
-
-            <p>
-              <strong>Sleep </strong>
-              <%= appartment.capacity %> people
-            </p>
-          </div>
-        <% end %>
-      </div>
-  <% end %>
+<div class="padded">
+  <div class="container">
+    <% @appartments.each do |appartment| %>
+      <% @appartment = appartment %>
+        <div class= "text-center">
+          <%= link_to appartment_path(appartment) do %>
+            <div class="row">
+              <%#= image_tag appartment.picture.url(:thumb) %>
+              <%= render 'standard_app_details' %>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
 </div>
 <%= render 'shared/map' %>

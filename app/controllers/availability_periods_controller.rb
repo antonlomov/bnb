@@ -20,7 +20,10 @@ class AvailabilityPeriodsController < ApplicationController
   end
 
   def destroy
-
+    @availability_period = AvailabilityPeriod.find(params[:id])
+    @appartment = Appartment.find(params[:appartment_id])
+    @availability_period.destroy
+    redirect_to appartment_path(@appartment)
   end
 
 

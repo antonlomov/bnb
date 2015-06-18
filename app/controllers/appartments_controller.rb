@@ -5,11 +5,34 @@ class AppartmentsController < ApplicationController
     # we need this empty action for the routes root to know where to go
   end
 
+  def index
+    @appartments = Appartment.all
+    # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
+      marker.lat appartment.latitude
+      marker.lng appartment.longitude
+    end
+  end
+
+  def for_owner
+    @current_user_id = current_account.user.id
+    @appartments = Appartment.find_apps_for_owner(@current_user_id)
+    @markers = Gmaps4rails.build_markers(@appartment) do |appartment, marker|
+      marker.lat appartment.latitude
+      marker.lng appartment.longitude
+    end
+  end
+
   def show
     @appartment = Appartment.find(params[:id])
+    # from user perspective
     @booking = Booking.new
-    @errors = []
+    @errors = [] # for passing it in the render
     @dates = check_appartment_availability
+    # from owner perspective
+    @current_user_id = current_account.user.id
+    @bookings = @appartment.bookings
+    @availability_periods = @appartment.availability_periods
     # Let's DYNAMICALLY build the markers for the view.
     @markers = Gmaps4rails.build_markers(@appartment) do |appartment, marker|
       marker.lat appartment.latitude
@@ -39,17 +62,12 @@ class AppartmentsController < ApplicationController
     end
   end
 
-  def index
-    @appartments = Appartment.all
-    # Let's DYNAMICALLY build the markers for the view.
-    @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
-      marker.lat appartment.latitude
-      marker.lng appartment.longitude
-    end
-  end
-
   def edit
     @appartment = Appartment.find(params[:id])
+    @property_types = Appartment::PROPERTY_TYPES
+    @room_numbers = Appartment::ROOM_NUMBERS
+    @capacities = Appartment::CAPACITIES
+    @errors = [] # for passing it in the render to form in the view
   end
 
   def update
@@ -61,8 +79,11 @@ class AppartmentsController < ApplicationController
   def destroy
     @appartment = Appartment.find(params[:id])
     @appartment.destroy
-    redirect_to appartments_path
+    redirect_to for_owner_appartments_path
   end
+
+
+  protected
 
   def check_appartment_availability
     @appartment = Appartment.find(params[:id])
@@ -102,9 +123,6 @@ class AppartmentsController < ApplicationController
     end
     booked_dates
   end
-
-
-  protected
 
   def appartment_params
     params.require(:appartment).permit(:address, :property_type, :nbr_rooms, :capacity, :picture)
