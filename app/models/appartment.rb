@@ -1,4 +1,6 @@
 class Appartment < ActiveRecord::Base
+
+
   geocoded_by :address
   after_validation :geocode
   PROPERTY_TYPES = %w(Apartment House Room)
@@ -17,9 +19,6 @@ class Appartment < ActiveRecord::Base
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 
-  scope :address, -> (address) { where address: address }
-  scope :property_type, -> (property_type) { where property_type: property_type }
-  scope :nbr_rooms, -> (nbr_rooms) { where nbr_rooms: nbr_rooms }
-  scope :capacity, -> (capacity) { where capacity: capacity }
+
 end
 
