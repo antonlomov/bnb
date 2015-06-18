@@ -17,6 +17,21 @@ Rails.application.configure do
   #  !! in production phase, remember to change host here!!
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  #  !! To be set up with Mandrill account: heroku addons:add mandrill
+  # then to deliver from your domain: heroku addons:open mandrill
+  # Go to Settings -> Domains -> Sending Domains.
+  # Go to your DNS provider and add records in the zone file for DKIM and SPF.
+  ActionMailer::Base.smtp_settings = {
+    :port =>           '587',
+    :address =>        'smtp.mandrillapp.com',
+    :user_name =>      ENV['MANDRILL_USERNAME'],
+    :password =>       ENV['MANDRILL_APIKEY'],
+    :domain =>         'heroku.com',
+    :authentication => :plain
+}
+
+ActionMailer::Base.delivery_method = :smtp
+
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.

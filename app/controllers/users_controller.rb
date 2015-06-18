@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     # for admin - to see all users
   end
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
 
   def update
   end
+
 
   protected
 
