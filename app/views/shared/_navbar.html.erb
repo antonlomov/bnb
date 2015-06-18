@@ -41,9 +41,6 @@
                   <%= link_to "Edit Profile", "#" %>
                 </li>
                 <li>
-                  <%= link_to "Delete My Account", "#" %>
-                </li>
-                <li>
                   <%= link_to destroy_account_session_path, method: :delete do %>
                     <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
                   <% end %>

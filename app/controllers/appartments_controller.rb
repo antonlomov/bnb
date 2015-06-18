@@ -2,6 +2,7 @@ class AppartmentsController < ApplicationController
   skip_before_action :authenticate_account!, only: [:index, :show, :home]
 
   def home
+    # we need this empty action for the routes root to know where to go
   end
 
   def show
