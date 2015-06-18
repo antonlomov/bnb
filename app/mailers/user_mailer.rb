@@ -15,7 +15,7 @@ class UserMailer < ApplicationMailer
     @appartment_address = booking.appartment.address
     @start_date = booking.start_date
     @end_date = booking.end_date
-    mail(to: @user.account.email, subject: 'Welcome to the woods')
+    mail(to: @user.account.email, subject: 'Thanks for your booking')
   end
 
 end
