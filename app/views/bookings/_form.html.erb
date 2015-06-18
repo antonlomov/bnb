@@ -1,3 +1,13 @@
+<div class="manual-validation-errors">
+  <% if ! @errors.empty? %>
+    <% @errors.each do |key, value| %>
+      Error for <%= key.to_s %> : <%= value.join %>
+      <br>
+    <% end %>
+  <% end %>
+  <br>
+</div>
+
 <%= form_for(@booking, method: :post, url: appartment_bookings_path(@appartment), :html => {:class => "form-horizontal center"}) do |f| %>
       <div class="form-group">
         <p>Check-In Date : <%= f.date_field :start_date %></p>
@@ -5,4 +15,6 @@
         <p><%= f.submit "Submit", class: "btn btn-default btn-primary" %></p>
       </div>
 <% end %>
+
+
 

@@ -1,9 +1,19 @@
-<div class="container">
-  <div class="row">
-    <h1>Add a new Apartment</h1>
-    <%= render 'form' %>
-    <br>
-    <%= link_to "All Apartments", appartments_path, {class: "btn btn-primary"} %>
-    <br>
+<div class="padded">
+  <div class="container">
+    <div class="row">
+      <div class="form-style">
+        <div class="panel-header">
+          <h1>List Your Space</h1>
+          <p>Make money renting out your place.</p>
+        </div>
+        <div class="panel-body">
+          <%= render 'form' %>
+        </div>
+      </div>
+        <br>
+
+        <%= link_to "All Apartments", appartments_path, {class: "btn btn-primary"} %>
+
+    </div>
   </div>
 </div>

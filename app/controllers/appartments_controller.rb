@@ -11,7 +11,8 @@ class AppartmentsController < ApplicationController
   def show
     @appartment = Appartment.find(params[:id])
     @booking = Booking.new
-
+    @errors = []
+    @dates = check_appartment_availability
     # Let's DYNAMICALLY build the markers for the view.
     @markers = Gmaps4rails.build_markers(@appartment) do |appartment, marker|
       marker.lat appartment.latitude
@@ -32,7 +33,7 @@ class AppartmentsController < ApplicationController
     # linking the new appartment to the user on the current session (from current_account)
     @appartment.owner_id = current_account.user_id
     if @appartment.save
-      redirect_to appartment_path(@appartment)
+      redirect_to new_appartment_availability_period_path(@appartment)
     else
       @property_types = Appartment::PROPERTY_TYPES
       @room_numbers = Appartment::ROOM_NUMBERS
@@ -84,10 +85,50 @@ class AppartmentsController < ApplicationController
   end
 
   def destroy
-    @appartment = Appartment.find(params[:index])
+    @appartment = Appartment.find(params[:id])
     @appartment.destroy
     redirect_to appartments_path
   end
+
+  def check_appartment_availability
+    @appartment = Appartment.find(params[:id])
+    @available_ranges = @appartment.availability_periods
+    @booked_ranges = @appartment.bookings
+    @available_dates = check_available_ranges(@available_ranges)
+    if @available_dates.uniq.nil?
+      @available_dates
+    else
+      @available_dates.uniq!
+    end
+    @booked_dates = check_bookings_ranges(@booked_ranges)
+    if @booked_dates.uniq.nil?
+      @booked_dates
+    else
+      @booked_dates.uniq!
+    end
+    @bookable_dates = @available_dates - @booked_dates
+  end
+
+  def check_available_ranges(ranges)
+    available_dates = []
+    ranges.map do |range|
+      available_dates << (range.start_date..range.end_date).to_a
+      available_dates.flatten!
+    end
+    available_dates
+
+
+  end
+
+  def check_bookings_ranges(ranges)
+    booked_dates = []
+    ranges.map do |range|
+      booked_dates << (range.start_date..range.end_date).to_a
+      booked_dates.flatten!
+    end
+    booked_dates
+  end
+
 
   protected
 

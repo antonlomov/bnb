@@ -1,0 +1,17 @@
+<div class="manual-validation-errors">
+  <% if ! @errors.empty? %>
+    <% @errors.each do |key, value| %>
+     Error for <%= key.to_s %> : <%= value.join %>
+     <br>
+    <% end %>
+  <% end %>
+  <br>
+</div>
+
+<%= form_for(@availability_period, method: :post, url: appartment_availability_periods_path, :html => {:class => "form-horizontal center"}) do |f| %>
+      <div class="form-group">
+        <p>Available Start Date : <%= f.date_field :start_date %></p>
+        <p>Available End Date : <%= f.date_field :end_date %></p>
+        <p><%= f.submit "Submit", class: "btn btn-default btn-primary" %></p>
+      </div>
+<% end %>
