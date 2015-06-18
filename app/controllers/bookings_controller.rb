@@ -3,7 +3,9 @@ class BookingsController < ApplicationController
   end
 
   def create
-    pars = booking_params.merge({appartment_id: params[:appartment_id]})
+    parsed_start_date = Date.strptime(booking_params[:start_date], "%m/%d/%Y")
+    parsed_end_date = Date.strptime(booking_params[:end_date], "%m/%d/%Y")
+    pars = {start_date: parsed_start_date, end_date: parsed_end_date, appartment_id: params[:appartment_id]}
     @booking = Booking.new(pars)
     # linking the new booking to the user on the current session (from current_account)
     @booking.user_id = current_account.user_id
