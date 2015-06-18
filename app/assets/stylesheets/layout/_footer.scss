@@ -5,7 +5,8 @@
  * ------------------------------------- */
 
  $footer-color: #fff;
- $footer-bg: #2b2d2e;;
+ $footer-bg: #2b2d2e;
+ $footer-lang-curr-bg: #565a5c;
  $footer-font:'Karla', sans-serif;
  $footer-hover-color: $yellow;
  $footer-font-size: 14px;
@@ -53,13 +54,10 @@
 /* -------------------------------------
  * Footer Table
  * ------------------------------------- */
-.footer-table {
-  padding-bottom: 3em;
-}
+
 
 .footer-table th {
-  padding: 0.75em 5em;
-  font-size: 16px;
+  padding: 3em;
 
 }
 
@@ -68,14 +66,21 @@
   }
 
 .footer-control {
-  background-color: #565a5c;
+  background-color: $footer-lang-curr-bg;
   border: 0;
   color: $footer-color;
   padding-top: 10px;
   padding-bottom: 20px;
-  max-width: 60%;
-  margin-left: 3em;
+  max-width: 90%;
+  margin-left: 2em;
   margin-top:1em;
 }
 
+.list-inline a {
+  padding: 4px;
+}
+
+.footer-top {
+  margin: 3%;
+}
 
