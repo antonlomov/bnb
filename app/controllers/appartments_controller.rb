@@ -125,7 +125,7 @@ class AppartmentsController < ApplicationController
   end
 
   def appartment_params
-    params.require(:appartment).permit(:address, :property_type, :nbr_rooms, :capacity, :picture)
+    params.require(:appartment).permit(:address, :property_type, :nbr_rooms, :capacity, :picture, :price)
 
   end
 end

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="center-this">
-          <h1>Your Booking</h1>
+          <h2>Thanks for booking with us!</h2>
           <ul>
             <li>Check-In Date : <%= @booking.start_date %></li>
             <li>Check-Out Date : <%= @booking.end_date %></li>
@@ -11,6 +11,7 @@
             <li>Property Type: <%= @appartment.property_type %></li>
             <li>Capacity: <%= @appartment.capacity %></li>
             <li>Number of Rooms: <%= @appartment.nbr_rooms %></li>
+            <li>Cost of your stay: <%= (@booking.start_date..@booking.end_date).count * @appartment.price%>€</li>
           </ul>
 
           <br>
@@ -25,3 +26,5 @@
     </div>
   </div>
 </div>
+
+
