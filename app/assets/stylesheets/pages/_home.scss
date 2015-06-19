@@ -42,6 +42,14 @@ video {
  * Pictures
  * ------------------------------------- */
 
+  .middle-man {
+    position: absolute;
+  top: 20%;
+  color:#fff;
+  font-size: 5em;
+
+  }
+
 .pic-card {
   border-radius: 4px;
   background-size: $pic-background-size;
@@ -51,6 +59,7 @@ video {
   background-size: cover;
   background-position:center;
   color:white;
+  margin-bottom: 2em;
 
 }
 
@@ -79,11 +88,11 @@ video {
 }
 
 .card-2 {
-  background-image: url("camping.png");
+  background-image: url("tree-tent.png");
 }
 
 .card-3 {
-  background-image: url("cliff_camp.png");
+  background-image: url("wood-tent.png");
 }
 
 .card-4 {
@@ -91,11 +100,27 @@ video {
 }
 
 .card-5 {
-  background-image: url("cliff_camp.png");
+  background-image: url("camping.png");
 }
 
 .card-6 {
   background-image: url("cliff_camp.png");
+}
+
+.card-7 {
+  background-image: url("family.png");
+}
+
+.card-8 {
+  background-image: url("woman.png");
+}
+
+.card-9 {
+  background-image: url("man.png");
+}
+
+.card-10 {
+  background-image: url("couple.png");
 }
 
 #autocomplete {
