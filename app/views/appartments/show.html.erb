@@ -1,5 +1,6 @@
 <div class="padded">
   <div class="container">
+
     <div class="row">
       <div class="col-xs-12 col-sm-6 center-this micro-margin">
         <% if current_account != nil %>
@@ -9,6 +10,7 @@
             <p><%= link_to 'Return to list of places', appartments_path %></p>
           <% end %>
         <% end %>
+
       <div class="panel-header">
         <h1>Appartment Details</h1>
       </div>
@@ -20,10 +22,13 @@
           <% end %>
         <% end %>
       </div>
+
       </div>
+
       <div class="col-xs-12 col-sm-6 micro-margin">
         <%= render 'shared/map' %>
       </div>
+
     </div>
 
     <div class="row">
@@ -66,7 +71,6 @@
         <% end %>
       <% end %>
     </div>
-
   </div>
 </div>
 
