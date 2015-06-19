@@ -1,22 +1,22 @@
 Rails.application.routes.draw do
 
-  get 'bookings/index'
-
-  get 'bookings/show'
-
   devise_for :accounts, :controllers => { :registrations => "registrations" }
   # (**) so here we tell devise that we're overwriting (piece) of his controller by our RegistrationsController
 
   resources :appartments do
+    get 'for_owner', on: :collection
     resources :bookings, only: [:create]
-    resources :availability_periods, only: [:new, :create]
+    resources :availability_periods, only: [:new, :create, :destroy]
   end
 
   resources :bookings, only: [:show, :destroy, :index]
 
   resources :users
 
+  get 'contact' => 'application#contact'
+
   root to: "appartments#home"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

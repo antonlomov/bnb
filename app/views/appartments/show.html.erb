@@ -1,29 +1,72 @@
 <div class="padded">
   <div class="container">
     <div class="row">
-      <%= @dates %>
-      <%= render 'bookings/form' %>
-      <div class="col-xs-12 col-sm-6">
-        <div class="center-this">
-          <h1>Title</h1>
-          <ul>
-            <li>Address: <%= @appartment.address %></li>
-            <li>Property Type: <%= @appartment.property_type %></li>
-            <li>Capacity: <%= @appartment.capacity %></li>
-            <li>Number of Rooms: <%= @appartment.nbr_rooms %></li>
-          </ul>
-          <p><%= link_to 'Return to list of apartments', appartments_path %></p>
-        </div>
-      </div>
 
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12 col-sm-6 center-this micro-margin">
+
+        <% if @current_user_id == @appartment.owner_id %>
+          <p><%= link_to 'Return to my places', for_owner_appartments_path %></p>
+        <% else %>
+          <p><%= link_to 'Return to list of places', appartments_path %></p>
+        <% end %>
+
+      <div class="panel-header">
+        <h1>Appartment Details</h1>
+      </div>
+      <div class="panel-body text-center">
+        <%= render 'standard_app_details' %>
+        <% if @current_user_id == @appartment.owner_id %>
+          <%= link_to "Edit Apartment Details", edit_appartment_path(@appartment), class: "btn btn-success" %>
+        <% end %>
+      </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 micro-margin">
         <%= render 'shared/map' %>
       </div>
-
     </div>
+
+    <div class="row">
+      <%= image_tag @appartment.picture.url(:medium) %>
+    </div>
+
+    <div class="row">
+      <% if @current_user_id == @appartment.owner_id %>
+          <div class="col-xs-12 col-sm-6 center-this micro-margin">
+            <div class="panel-header">
+              <h1>Appartment Bookings</h1>
+            </div>
+            <div class="panel-body">
+              <% @bookings.each do |booking| %>
+                <%= booking.start_date %> - <%= booking.end_date %>
+              <% end %>
+          </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 center-this micro-margin">
+            <div class="panel-header">
+              <h1>Appartment Availabilities</h1>
+            </div>
+            <div class="panel-body text-center">
+              <% @availability_periods.each do |availability_period| %>
+                <%= availability_period.start_date %> - <%= availability_period.end_date %>
+                <%= link_to "Delete", appartment_availability_period_path(@appartment, availability_period), method: :delete, class: " btn btn-danger" %> <br>
+              <% end %>
+            </div>
+            <br>
+            <%= link_to "Add Availability Period", new_appartment_availability_period_path(@appartment), class: "btn btn-success" %>
+          </div>
+
+      <% else %>
+        <div class="col-xs-12 col-sm-6 center-this">
+          <%= render 'bookings/form' %>
+        </div>
+        <div class="col-xs-12 col-sm-6 center-this">
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>
 
-<%= image_tag @appartment.picture.url(:medium) %>
+
 
 

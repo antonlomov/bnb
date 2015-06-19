@@ -1,6 +1,19 @@
+/* -------------------------------------
+ * You killer button SASS module
+ * ------------------------------------- */
+$front-page-pic-pad: 12.5px;
 
-$front-page-pic-pad: 8px;
+/* -------------------------------------
+ * Picture SASS
+ * ------------------------------------- */
+$pic-margin: 5%;
+$pic-background-size: 100%;
+$pic-height: 340px;
+$pic-width: 90%;
 
+/* -------------------------------------
+ * Video CSS
+ * ------------------------------------- */
 
 .video {
   position: relative;
@@ -22,16 +35,67 @@ video {
   top: 30%;
   right: 30%;
   color:#fff;
+}
+
+
+/* -------------------------------------
+ * Pictures
+ * ------------------------------------- */
+
+.pic-card {
+  border-radius: 4px;
+  background-size: $pic-background-size;
+  height: $pic-height;
+  width: $pic-width;
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-position:center;
+  color:white;
 
 }
 
-.front-pic {
 
- width:355px;
-  padding-left:$front-page-pic-pad;
-  padding-right:$front-page-pic-pad;
-  height:344px;
+.mid-image {
 
+  position: relative;
+
+
+}
+
+.mid-image img {
+  size: cover;
+  height:20vh;
+  margin-top:none;
+  width: 100%;
+  height: 50%;
+  padding-top: none;
+}
+
+/* -------------------------------------
+* Picture Selector
+ * ------------------------------------- */
+.card-1 {
+  background-image: url("tofino.jpg");
+}
+
+.card-2 {
+  background-image: url("camping.png");
+}
+
+.card-3 {
+  background-image: url("cliff_camp.png");
+}
+
+.card-4 {
+  background-image: url("swiss.png");
+}
+
+.card-5 {
+  background-image: url("cliff_camp.png");
+}
+
+.card-6 {
+  background-image: url("cliff_camp.png");
 }
 
 #autocomplete {

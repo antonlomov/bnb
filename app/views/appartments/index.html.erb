@@ -1,48 +1,73 @@
-<h1>Appartments#index</h1>
 
-<%= form_for(@filter, method: :get, url: appartments_path) do |f| %>
-
-<!--   <p>Address : <%= f.text_field :address%></p> -->
-  <p>Number of rooms : <%= f.text_field :nbr_rooms %></p>
-  <p>Capacity : <%= f.text_field :capacity %></p>
-  <p>Property type : <%= f.select :property_type, @property_types %></p>
-
-  <p><%= f.submit "Search apartments" %></p>
-
-<% end %>
 
 <%#= debug params[:city] %>
 <%#= debug @appartment %>
 
-<div class="container">
-  <% @appartments.each do |appartment| %>
-      <div class= "text-center">
-        <%= link_to appartment_path(appartment) do %>
-          <div class="row">
-            <%#= image_tag appartment.picture.url(:thumb) %>
-            <p>
-              <strong>Address:</strong>
-              <%= appartment.address %>
-            </p>
 
-            <p>
-              <strong>Property type:</strong>
-              <%= appartment.property_type %>
-            </p>
+<div class="padded">
+  <div class="container">
 
-            <p>
-              <strong>Number of bedrooms:</strong>
-              <%= appartment.nbr_rooms %>
-            </p>
+    <%= form_for(@filter, method: :get, url: appartments_path) do |f| %>
 
-            <p>
-              <strong>Sleep </strong>
-              <%= appartment.capacity %> people
-            </p>
+    <!--   <p>Address : <%= f.text_field :address%></p> -->
+      <p>Number of rooms : <%= f.text_field :nbr_rooms %></p>
+      <p>Capacity : <%= f.text_field :capacity %></p>
+      <p>Property type : <%= f.select :property_type, @property_types %></p>
+
+      <p><%= f.submit "Search apartments" %></p>
+
+    <% end %>
+
+<div class="row">
+  <div class="col-xs-6 col-xs-7">
+
+  <nav>
+    <div id="scroll">
+      <% @appartments.each do |appartment| %>
+        <% @appartment = appartment %>
+          <div class= "text-center each-aval panel-body-full">
+            <%= link_to appartment_path(appartment) do %>
+              <div class="row">
+                <div class="col-xs-4 show-aval-pic">
+                  <%= image_tag appartment.picture.url(:medium) %>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                  <div class="show-aval-map">
+                  <%= render 'standard_app_details' %>
+                </div>
+                </div>
+              </div>
+          <% end %>
           </div>
-        <% end %>
-      </div>
-  <% end %>
+      <% end %>
+    </div>
+  </nav>
+
+
+  </div>
+  <div class="col-xs-5">
+    <%= render 'shared/map' %>
+  </div>
+</div>
 </div>
 
-<%= render 'shared/map' %>
+</div>
+
+ <script language="javascript">
+         function autoResizeDiv()
+         {
+             document.getElementById('scroll').style.height = window.innerHeight +'px';
+       }
+        window.onresize = autoResizeDiv;
+        autoResizeDiv();
+
+
+      function autoResizeMap()
+         {
+             document.getElementById('map').style.height = window.innerHeight +'px';
+       }
+       window.onresize = autoResizeMap;
+         autoResizeMap();
+
+    </script>
+

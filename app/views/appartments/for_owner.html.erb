@@ -1,0 +1,23 @@
+<div class="padded">
+  <div class="container">
+    <% @appartments.each do |appartment| %>
+      <% @appartment = appartment %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 panel-body-full">
+          <%#= image_tag appartment.picture.url(:thumb) %>
+          <%= render 'standard_app_details' %>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <ul class="no-bullets micro-margin">
+            <li><%= link_to "View Apartment Listing", appartment_path(@appartment), class: "btn btn-success" %></li>
+            <br>
+            <li><%= link_to "Delete Apartment Listing", appartment_path(@appartment), method: :delete, class: "btn btn-danger" %></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to "List New Apartment", new_appartment_path, class: "btn btn-primary" %>
+  </div>
+</div>
+<%= render 'shared/map' %>
+

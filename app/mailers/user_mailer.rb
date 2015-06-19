@@ -11,11 +11,15 @@ class UserMailer < ApplicationMailer
   end
 
   def confirm_booking(booking)
+    @appartment = booking.appartment
     @user = booking.user
-    @appartment_address = booking.appartment.address
+    @appartment_address = @appartment.address
     @start_date = booking.start_date
     @end_date = booking.end_date
-    mail(to: @user.account.email, subject: 'Welcome to the woods')
+    number_nights = (@start_date..@end_date).count
+    @booking_cost = @appartment.price * number_nights
+
+    mail(to: @user.account.email, subject: 'Thanks for your booking')
   end
 
 end

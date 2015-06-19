@@ -1,3 +1,23 @@
 // Place all the styles related to the Appartments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+nav #scroll{
+  height:1000px; width:100%;
+  overflow:hidden;
+  overflow-y:scroll;
+}
+
+.show-aval-pic img {
+  height: 80%;
+  width: 80%;
+}
+
+.each-aval {
+  padding: 5px;
+}
+
+.each-aval ul {
+  margin: 10% 0;
+}

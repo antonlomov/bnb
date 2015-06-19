@@ -1,6 +1,21 @@
 <div class="padded">
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+  <div class="container">
 
-<%= image_tag @user.picture.url(:medium) %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <ul>
+          <li><%= @user.first_name %></li>
+          <li><%= @user.last_name %></li>
+          <li><%= @user.phone_number %></li>
+          <li><%= @user.account.email %></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= image_tag @user.picture.url(:medium) %>
+      </div>
+    </div>
+
+    <%= link_to "Edit my Profile", edit_user_path(current_account.user) %>
+
+  </div>
 </div>
