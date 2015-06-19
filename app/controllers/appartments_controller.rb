@@ -48,7 +48,9 @@ class AppartmentsController < ApplicationController
   end
 
   def for_owner
-    @current_user_id = current_account.user.id
+    if current_account
+      @current_user_id = current_account.user_id
+    end
     @appartments = Appartment.find_apps_for_owner(@current_user_id)
     @markers = Gmaps4rails.build_markers(@appartment) do |appartment, marker|
       marker.lat appartment.latitude
@@ -63,7 +65,9 @@ class AppartmentsController < ApplicationController
     @errors = [] # for passing it in the render
     @dates = check_appartment_availability
     # from owner perspective
-    @current_user_id = current_account.user.id
+    if current_account
+      @current_user_id = current_account.user_id
+    end
     @bookings = @appartment.bookings
     @availability_periods = @appartment.availability_periods
     # Let's DYNAMICALLY build the markers for the view.
