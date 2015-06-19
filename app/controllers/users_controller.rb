@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    # @errors = [] # for passing it in the render
   end
 
   def create
@@ -27,9 +28,14 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    # @errors = [] # for passing it in the render to form in the view
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user)
   end
 
 
