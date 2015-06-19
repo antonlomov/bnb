@@ -18,7 +18,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <% if account_signed_in? %>
+          <% if account_signed_in? && current_account.user %>
             <li>
               <%= link_to "Contact Us", contact_path %>
             </li>
