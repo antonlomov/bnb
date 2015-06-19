@@ -72,7 +72,9 @@ class AppartmentsController < ApplicationController
     @errors = [] # for passing it in the render
     @dates = check_appartment_availability
     # from owner perspective
-    @current_user_id = current_account.user.id
+    if !current_account.nil?
+      @current_user_id = current_account.user.id
+    end
     @bookings = @appartment.bookings
     @availability_periods = @appartment.availability_periods
     # Let's DYNAMICALLY build the markers for the view.
