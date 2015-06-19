@@ -7,7 +7,9 @@ class AvailabilityPeriodsController < ApplicationController
   end
 
   def create
-    pars = availability_period_params.merge({appartment_id: params[:appartment_id]})
+    parsed_start_date = Date.strptime(availability_period_params[:start_date], "%m/%d/%Y")
+    parsed_end_date = Date.strptime(availability_period_params[:end_date], "%m/%d/%Y")
+    pars = {start_date: parsed_start_date, end_date: parsed_end_date, appartment_id: params[:appartment_id]}
     @availability_period = AvailabilityPeriod.new(pars)
     @appartment = Appartment.find(params[:appartment_id])
     if @availability_period.save

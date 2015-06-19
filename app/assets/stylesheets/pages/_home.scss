@@ -50,10 +50,30 @@ video {
   background-repeat:no-repeat;
   background-size: cover;
   background-position:center;
+  color:white;
 
 }
 
 
+.mid-image {
+
+  position: relative;
+
+
+}
+
+.mid-image img {
+  size: cover;
+  height:20vh;
+  margin-top:none;
+  width: 100%;
+  height: 50%;
+  padding-top: none;
+}
+
+/* -------------------------------------
+* Picture Selector
+ * ------------------------------------- */
 .card-1 {
   background-image: url("tofino.jpg");
 }
