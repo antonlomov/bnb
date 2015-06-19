@@ -9,8 +9,6 @@
 </div>
 
 
-
-
 <%= form_for(@booking, method: :post, url: appartment_bookings_path(@appartment), :html => {:class => "form-horizontal center"}) do |f| %>
       <div class="form-group">
         <p>Check-In Date : <%= f.text_field :start_date, :class => 'datepicker disabledDates' %></p>

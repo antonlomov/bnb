@@ -1,2 +1,18 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<div class="padded">
+  <div>
+    <% @bookings.each do |booking| %>
+      <% appartment = booking.appartment %>
+      <div>
+        <ul>
+          <li>Check-In Date : <%= booking.start_date %></li>
+          <li>Check-Out Date : <%= booking.end_date %></li>
+          <li>Address: <%= appartment.address %></li>
+          <li>Property Type: <%= appartment.property_type %></li>
+          <li>Capacity: <%= appartment.capacity %></li>
+          <li>Number of Rooms: <%= appartment.nbr_rooms %></li>
+          <li>Cost of your stay: <%= (booking.start_date..booking.end_date).count * appartment.price%>€</li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>
