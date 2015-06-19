@@ -1,5 +1,8 @@
 class BookingsController < ApplicationController
+
   def index
+    @current_user_id = current_account.user.id
+    @bookings = Booking.find_bookings_for_user(@current_user_id)
   end
 
   def create
@@ -9,10 +12,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(pars)
     # linking the new booking to the user on the current session (from current_account)
     @booking.user_id = current_account.user_id
+    @appartment = Appartment.find(params[:appartment_id])
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      @appartment = Appartment.find(params[:appartment_id])
       @errors = @booking.errors.messages
       # those 2 instance variables are passed with the render
       render 'appartments/show'
