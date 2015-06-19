@@ -9,16 +9,16 @@
         <div class="panel-body">
           <%= simple_form_for(@user) do |f| %>
           <%= f.error_notification %>
-
           <%= f.input :first_name %>
           <%= f.input :last_name %>
           <%= f.input :phone_number %>
           <%= f.input :picture %>
-          <%= f.input :email %>
-          <%= f.button :submit %>
+          <%= f.button :submit, "Update Profile" %>
         <% end %>
         </div>
       </div>
+    </div>
+    <%= link_to "Update Profile & Continue to Edit Account Details", edit_account_registration_path %>
   </div>
 </div>
 

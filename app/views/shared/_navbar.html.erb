@@ -36,7 +36,7 @@
                   <%= link_to "View My Places", for_owner_appartments_path %>
                 </li>
                 <li>
-                  <%= link_to "Edit Profile", edit_user_path(@user) %>
+                  <%= link_to "Edit Profile", edit_user_path(current_account.user) %>
                 </li>
                 <li>
                   <%= link_to destroy_account_session_path, method: :delete do %>
