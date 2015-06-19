@@ -1,10 +1,15 @@
 <div class="padded">
   <div class="container">
     <div class="row">
-      <h1>Add a new Availability Period</h1>
-      <%= render 'form' %>
-      <br>
-      <%= link_to "Skip", appartment_path(@appartment), {class: "btn btn-primary"} %>
+      <div class=" panel-header">
+        <h1>Add a new Availability Period</h1>
+      </div>
+      <div class="panel-body text-center">
+        <%= render 'form' %>
+      </div>
+        <br>
+        <%= link_to "Skip", appartment_path(@appartment), {class: "btn btn-primary"} %>
+
       <br>
     </div>
   </div>
