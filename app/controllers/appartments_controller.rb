@@ -1,18 +1,60 @@
 class AppartmentsController < ApplicationController
   skip_before_action :authenticate_account!, only: [:index, :show, :home]
+  #   scope :address, -> (address) { where address: address }
+  # scope :property_type, -> (property_type) { where property_type: property_type }
+  # scope :nbr_rooms, -> (nbr_rooms) { where nbr_rooms: nbr_rooms }
+  # scope :capacity, -> (capacity) { where capacity: capacity }
 
   def home
     # we need this empty action for the routes root to know where to go
   end
 
-  def index
-    @appartments = Appartment.all
+ def index
+    @property_types = Appartment::PROPERTY_TYPES
+    @room_numbers = Appartment::ROOM_NUMBERS
+    @capacities = Appartment::CAPACITIES
+
+    if params[:city].nil?
+      @appartments = Appartment.all
+    else
+      # flats = Appartment.all
+
+      @appartments= Appartment.near(params[:city])
+    end
+
+    @filter = Appartment.new(params[:filter])
+
+    # p 'printing the parameters'
+    # p params[:appartment][:address]
+
+    if params[:appartment].nil?
+      @appartments = Appartment.all
+    else
+
+      # @appartments = Appartment.find_by_city(params[:address])
+      @appartments = Appartment.all
+      # @appartments = @appartments.where(address: params[:appartment][:address]) if params[:appartment][:address].present?
+      @appartments = @appartments.where(property_type: params[:appartment][:property_type]) if params[:appartment][:property_type].present?
+      @appartments = @appartments.where("nbr_rooms >=?", params[:appartment][:nbr_rooms]) if params[:appartment][:nbr_rooms].present?
+      @appartments = @appartments.where("capacity >=?", params[:appartment][:capacity]) if params[:appartment][:capacity].present?
+    end
+    # @appartments = Appartment.all
+
     # Let's DYNAMICALLY build the markers for the view.
-    @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
+      @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
       marker.lat appartment.latitude
       marker.lng appartment.longitude
     end
   end
+
+  # def index
+  #   @appartments = Appartment.all
+  #   # Let's DYNAMICALLY build the markers for the view.
+  #   @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
+  #     marker.lat appartment.latitude
+  #     marker.lng appartment.longitude
+  #   end
+  # end
 
   def for_owner
     @current_user_id = current_account.user.id
@@ -30,7 +72,9 @@ class AppartmentsController < ApplicationController
     @errors = [] # for passing it in the render
     @dates = check_appartment_availability
     # from owner perspective
-    @current_user_id = current_account.user.id
+    if !current_account.nil?
+      @current_user_id = current_account.user.id
+    end
     @bookings = @appartment.bookings
     @availability_periods = @appartment.availability_periods
     # Let's DYNAMICALLY build the markers for the view.
@@ -127,5 +171,10 @@ class AppartmentsController < ApplicationController
   def appartment_params
     params.require(:appartment).permit(:address, :city, :property_type, :nbr_rooms, :capacity, :picture, :price)
   end
+
+  # def filtering_params(params)
+  #   params.slice(:address, :property_type, :nbr_rooms, :capacity, :picture)
+
+  # end
 
 end

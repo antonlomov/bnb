@@ -1,4 +1,6 @@
 class Appartment < ActiveRecord::Base
+
+
   geocoded_by :address
   after_validation :geocode
   PROPERTY_TYPES = %w(Apartment House Room)
@@ -17,8 +19,10 @@ class Appartment < ActiveRecord::Base
   validates_attachment_content_type :picture,
     content_type: /\Aimage\/.*\z/
 
+
   def self.find_apps_for_owner(current_user_id)
     apps = Appartment.where("owner_id = #{current_user_id}")
   end
+
 end
 

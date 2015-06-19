@@ -1,5 +1,22 @@
+
+
+<%#= debug params[:city] %>
+<%#= debug @appartment %>
+
+
 <div class="padded">
   <div class="container">
+
+    <%= form_for(@filter, method: :get, url: appartments_path) do |f| %>
+
+    <!--   <p>Address : <%= f.text_field :address%></p> -->
+      <p>Number of rooms : <%= f.text_field :nbr_rooms %></p>
+      <p>Capacity : <%= f.text_field :capacity %></p>
+      <p>Property type : <%= f.select :property_type, @property_types %></p>
+
+      <p><%= f.submit "Search apartments" %></p>
+
+    <% end %>
 
 <div class="row">
   <div class="col-xs-6 col-xs-7">
@@ -33,6 +50,7 @@
   </div>
 </div>
 </div>
+
 </div>
 
  <script language="javascript">
@@ -52,3 +70,4 @@
          autoResizeMap();
 
     </script>
+

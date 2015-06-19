@@ -25,7 +25,7 @@
 
             <li class="dropdown">
               <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
-                <%= image_tag current_account.user.picture, class: "img-avatar" %>
+                <%#= image_tag current_account.user.picture, class: "img-avatar" %>
                 Profile <span class="caret"></span>
               <% end %>
               <ul class="dropdown-menu" role="menu">
@@ -36,7 +36,7 @@
                   <%= link_to "View My Places", for_owner_appartments_path %>
                 </li>
                 <li>
-                  <%= link_to "View Profile", user_path(current_account.user) %>
+                  <%#= link_to "View Profile", user_path(current_account.user) %>
                 </li>
                 <li>
                   <%= link_to destroy_account_session_path, method: :delete do %>

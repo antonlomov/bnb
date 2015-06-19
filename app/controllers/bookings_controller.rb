@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
 
   def index
-    @current_user_id = current_account.user.id
+    @current_user_id = current_account.user_id
     @bookings = Booking.find_bookings_for_user(@current_user_id)
   end
 
