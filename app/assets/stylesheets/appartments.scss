@@ -3,3 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+nav #scroll{
+  height:1000px; width:100%;
+  overflow:hidden;
+  overflow-y:scroll;
+}
+
+.show-aval-pic img {
+  height: 80%;
+  width: 80%;
+}
+
+.each-aval {
+  padding: 5px;
+}
+
+.each-aval ul {
+  margin: 10% 0;
+}

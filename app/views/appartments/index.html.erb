@@ -1,16 +1,54 @@
 <div class="padded">
   <div class="container">
-    <% @appartments.each do |appartment| %>
-      <% @appartment = appartment %>
-        <div class= "text-center">
-          <%= link_to appartment_path(appartment) do %>
-            <div class="row">
-              <%= image_tag appartment.picture.url(:medium) %>
-              <%= render 'standard_app_details' %>
-            </div>
+
+<div class="row">
+  <div class="col-xs-6 col-xs-7">
+
+  <nav>
+    <div id="scroll">
+      <% @appartments.each do |appartment| %>
+        <% @appartment = appartment %>
+          <div class= "text-center each-aval panel-body-full">
+            <%= link_to appartment_path(appartment) do %>
+              <div class="row">
+                <div class="col-xs-4 show-aval-pic">
+                  <%= image_tag appartment.picture.url(:medium) %>
+                </div>
+                <div class="col-xs-6 col-sm-6">
+                  <div class="show-aval-map">
+                  <%= render 'standard_app_details' %>
+                </div>
+                </div>
+              </div>
           <% end %>
-        </div>
-    <% end %>
+          </div>
+      <% end %>
+    </div>
+  </nav>
+
+
+  </div>
+  <div class="col-xs-5">
+    <%= render 'shared/map' %>
   </div>
 </div>
-<%= render 'shared/map' %>
+</div>
+</div>
+
+ <script language="javascript">
+         function autoResizeDiv()
+         {
+             document.getElementById('scroll').style.height = window.innerHeight +'px';
+       }
+        window.onresize = autoResizeDiv;
+        autoResizeDiv();
+
+
+      function autoResizeMap()
+         {
+             document.getElementById('map').style.height = window.innerHeight +'px';
+       }
+       window.onresize = autoResizeMap;
+         autoResizeMap();
+
+    </script>
