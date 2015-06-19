@@ -1,5 +1,6 @@
 <div class="padded">
   <div class="container">
+
     <div class="row">
 
       <div class="col-xs-12 col-sm-6 center-this micro-margin">
@@ -10,19 +11,22 @@
           <p><%= link_to 'Return to list of places', appartments_path %></p>
         <% end %>
 
-      <div class="panel-header">
-        <h1>Appartment Details</h1>
+        <div class="panel-header">
+          <h1>Appartment Details</h1>
+        </div>
+        <div class="panel-body text-center">
+          <%= render 'standard_app_details' %>
+          <% if @current_user_id == @appartment.owner_id %>
+            <%= link_to "Edit Apartment Details", edit_appartment_path(@appartment), class: "btn btn-success" %>
+          <% end %>
+        </div>
+
       </div>
-      <div class="panel-body text-center">
-        <%= render 'standard_app_details' %>
-        <% if @current_user_id == @appartment.owner_id %>
-          <%= link_to "Edit Apartment Details", edit_appartment_path(@appartment), class: "btn btn-success" %>
-        <% end %>
-      </div>
-      </div>
+
       <div class="col-xs-12 col-sm-6 micro-margin">
         <%= render 'shared/map' %>
       </div>
+
     </div>
 
     <div class="row">
@@ -63,7 +67,6 @@
         </div>
       <% end %>
     </div>
-
   </div>
 </div>
 
