@@ -47,15 +47,6 @@ class AppartmentsController < ApplicationController
     end
   end
 
-  # def index
-  #   @appartments = Appartment.all
-  #   # Let's DYNAMICALLY build the markers for the view.
-  #   @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
-  #     marker.lat appartment.latitude
-  #     marker.lng appartment.longitude
-  #   end
-  # end
-
   def for_owner
     @current_user_id = current_account.user.id
     @appartments = Appartment.find_apps_for_owner(@current_user_id)
