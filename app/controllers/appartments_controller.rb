@@ -43,6 +43,17 @@ class AppartmentsController < ApplicationController
   end
 
   def index
+    @property_types = Appartment::PROPERTY_TYPES
+    @room_numbers = Appartment::ROOM_NUMBERS
+    @capacities = Appartment::CAPACITIES
+
+    if params[:city].nil?
+      @appartments = Appartment.all
+    else
+      # flats = Appartment.all
+
+      @appartments= Appartment.near(params[:city])
+    end
 
     @filter = Appartment.new(params[:filter])
 
@@ -52,20 +63,18 @@ class AppartmentsController < ApplicationController
     if params[:appartment].nil?
       @appartments = Appartment.all
     else
-    # p 'printing the params'
-      # p params[:appartment][:capacity]
-      @appartments = Appartment.find_by_city(params[:address])
-      @appartments = @appartments.where(address: params[:appartment][:address]) if params[:appartment][:address].present?
+
+      # @appartments = Appartment.find_by_city(params[:address])
+      @appartments = Appartment.all
+      # @appartments = @appartments.where(address: params[:appartment][:address]) if params[:appartment][:address].present?
       @appartments = @appartments.where(property_type: params[:appartment][:property_type]) if params[:appartment][:property_type].present?
-      @appartments = @appartments.where(nbr_rooms: params[:appartment][:nbr_rooms]) if params[:appartment][:nbr_rooms].present?
-      p "print appt"
-      p @appartments
-      @appartments = @appartments.where(capacity: params[:appartment][:capacity]) if params[:appartment][:capacity].present?
+      @appartments = @appartments.where("nbr_rooms >=?", params[:appartment][:nbr_rooms]) if params[:appartment][:nbr_rooms].present?
+      @appartments = @appartments.where("capacity >=?", params[:appartment][:capacity]) if params[:appartment][:capacity].present?
     end
     # @appartments = Appartment.all
 
     # Let's DYNAMICALLY build the markers for the view.
-    @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
+      @markers = Gmaps4rails.build_markers(@appartments) do |appartment, marker|
       marker.lat appartment.latitude
       marker.lng appartment.longitude
     end
