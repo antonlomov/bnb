@@ -7,7 +7,7 @@ class Appartment < ActiveRecord::Base
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
   has_many :bookings, dependent: :restrict_with_exception
   has_many :availability_periods, dependent: :destroy
-  validates :address, :property_type, :nbr_rooms, :capacity, :owner_id, presence: true
+  validates :address, :city, :property_type, :nbr_rooms, :capacity, :owner_id, presence: true
   validates :property_type, inclusion: { in: PROPERTY_TYPES, message: "%{value} is not a valid property type" }
   validates :nbr_rooms, inclusion: { in: ROOM_NUMBERS, message: "%{value} is not in the range of room numbers" }, numericality: { only_integer: true }
   validates :capacity, inclusion: { in: CAPACITIES, message: "%{value} is not in the range of capacities" }, numericality: { only_integer: true }
